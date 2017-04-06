@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Graphics.Imaging;
 using Windows.UI.Xaml.Media.Imaging;
 using ZXing.Common;
 using ZXing.Multi;
@@ -34,12 +35,12 @@ namespace ZXing
 
       private static readonly Func<byte[], int, int, BitmapFormat, LuminanceSource> defaultCreateRGBLuminanceSource =
          (rawBytes, width, height, format) => new RGBLuminanceSource(rawBytes, width, height, format);
-      private static readonly Func<WriteableBitmap, LuminanceSource> defaultCreateLuminanceSource =
-         (bitmap) => new BitmapLuminanceSource(bitmap);
+      private static readonly Func<SoftwareBitmap, LuminanceSource> defaultCreateLuminanceSource =
+         (bitmap) => new SoftwareBitmapLuminanceSource(bitmap);
 
       private Reader reader;
       private readonly Func<byte[], int, int, BitmapFormat, LuminanceSource> createRGBLuminanceSource;
-      private readonly Func<WriteableBitmap, LuminanceSource> createLuminanceSource;
+      private readonly Func<SoftwareBitmap, LuminanceSource> createLuminanceSource;
       private readonly Func<LuminanceSource, Binarizer> createBinarizer;
       private bool usePreviousState;
       private DecodingOptions options;
@@ -209,7 +210,7 @@ namespace ZXing
       /// <value>
       /// The function to create a luminance source object.
       /// </value>
-      internal Func<WriteableBitmap, LuminanceSource> CreateLuminanceSource
+      internal Func<SoftwareBitmap, LuminanceSource> CreateLuminanceSource
       {
          get
          {
@@ -250,7 +251,7 @@ namespace ZXing
       /// <param name="createBinarizer">Sets the function to create a binarizer object for a luminance source.
       /// If null then HybridBinarizer is used</param>
       internal BarcodeReader(Reader reader,
-         Func<WriteableBitmap, LuminanceSource> createLuminanceSource,
+         Func<SoftwareBitmap, LuminanceSource> createLuminanceSource,
          Func<LuminanceSource, Binarizer> createBinarizer
          )
          : this(reader, createLuminanceSource, createBinarizer, null)
@@ -269,7 +270,7 @@ namespace ZXing
       /// <param name="createRGBLuminanceSource">Sets the function to create a luminance source object for a rgb array.
       /// If null the RGBLuminanceSource is used. The handler is only called when Decode with a byte[] array is called.</param>
       internal BarcodeReader(Reader reader,
-         Func<WriteableBitmap, LuminanceSource> createLuminanceSource,
+         Func<SoftwareBitmap, LuminanceSource> createLuminanceSource,
          Func<LuminanceSource, Binarizer> createBinarizer,
          Func<byte[], int, int, BitmapFormat, LuminanceSource> createRGBLuminanceSource
          )
@@ -286,7 +287,7 @@ namespace ZXing
       /// </summary>
       /// <param name="barcodeBitmap">The barcode bitmap.</param>
       /// <returns>the result data or null</returns>
-      public Result Decode(WriteableBitmap barcodeBitmap)
+      public Result Decode(SoftwareBitmap barcodeBitmap)
       {
          if (CreateLuminanceSource == null)
          {
@@ -394,7 +395,7 @@ namespace ZXing
       /// </summary>
       /// <param name="barcodeBitmap">The barcode bitmap.</param>
       /// <returns>the result data or null</returns>
-      public Result[] DecodeMultiple(WriteableBitmap barcodeBitmap)
+      public Result[] DecodeMultiple(SoftwareBitmap barcodeBitmap)
       {
          if (CreateLuminanceSource == null)
          {

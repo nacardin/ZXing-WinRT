@@ -16,7 +16,7 @@
 
 using System;
 using System.Collections.Generic;
-
+using Windows.Graphics.Imaging;
 using Windows.UI.Xaml.Media.Imaging;
 
 using ZXing.Common;
@@ -92,7 +92,7 @@ namespace ZXing
       /// </summary>
       /// <param name="barcodeBitmap">The barcode bitmap.</param>
       /// <returns>the result data or null</returns>
-      Result Decode(WriteableBitmap barcodeBitmap);
+      Result Decode(SoftwareBitmap barcodeBitmap);
 
       /// <summary>
       /// Decodes the specified barcode bitmap which is given by a generic byte array with the order RGB24.
@@ -111,6 +111,6 @@ namespace ZXing
       /// </summary>
       /// <param name="barcodeBitmap">The barcode bitmap.</param>
       /// <returns>the result data or null</returns>
-      Result[] DecodeMultiple(WriteableBitmap barcodeBitmap);
+      Result[] DecodeMultiple(SoftwareBitmap barcodeBitmap);
    }
 }
