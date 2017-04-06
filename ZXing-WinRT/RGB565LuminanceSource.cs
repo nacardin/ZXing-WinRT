@@ -29,7 +29,7 @@ namespace ZXing
       /// </summary>
       /// <param name="width">The width.</param>
       /// <param name="height">The height.</param>
-      protected RGB565LuminanceSource(int width, int height)
+      private RGB565LuminanceSource(int width, int height)
          : base(width, height)
       {
       }

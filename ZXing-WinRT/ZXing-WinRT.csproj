@@ -7,8 +7,8 @@
     <ProjectGuid>{218E19E6-35A6-455E-B5E5-EEA688D430CE}</ProjectGuid>
     <OutputType>winmdobj</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZXing_WinRT</RootNamespace>
-    <AssemblyName>ZXing-WinRT</AssemblyName>
+    <RootNamespace>ZXing</RootNamespace>
+    <AssemblyName>ZXing</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -124,19 +125,13 @@
     <Compile Include="aztec\encoder\State.cs" />
     <Compile Include="aztec\encoder\Token.cs" />
     <Compile Include="BarcodeFormat.cs" />
-    <Compile Include="BarcodeReader.cs" />
     <Compile Include="BarcodeReader.WINMD.cs" />
-    <Compile Include="BarcodeReaderGeneric.cs" />
-    <Compile Include="BarcodeWriter.cs" />
     <Compile Include="BarcodeWriter.WINMD.cs" />
-    <Compile Include="BarcodeWriterGeneric.cs" />
     <Compile Include="BarcodeWriterSvg.WINMD.cs" />
     <Compile Include="BaseLuminanceSource.cs" />
     <Compile Include="Binarizer.cs" />
     <Compile Include="BinaryBitmap.cs" />
-    <Compile Include="BitmapLuminanceSource.cs" />
     <Compile Include="BitmapLuminanceSource.Silverlight.cs" />
-    <Compile Include="BitmapSourceLuminanceSource.cs" />
     <Compile Include="client\result\AbstractDoCoMoResultParser.cs" />
     <Compile Include="client\result\AddressBookAUResultParser.cs" />
     <Compile Include="client\result\AddressBookDoCoMoResultParser.cs" />
@@ -153,12 +148,6 @@
     <Compile Include="client\result\GeoResultParser.cs" />
     <Compile Include="client\result\ISBNParsedResult.cs" />
     <Compile Include="client\result\ISBNResultParser.cs" />
-    <Compile Include="client\result\optional\AbstractNDEFResultParser.cs" />
-    <Compile Include="client\result\optional\NDEFRecord.cs" />
-    <Compile Include="client\result\optional\NDEFSmartPosterParsedResult.cs" />
-    <Compile Include="client\result\optional\NDEFSmartPosterResultParser.cs" />
-    <Compile Include="client\result\optional\NDEFTextResultParser.cs" />
-    <Compile Include="client\result\optional\NDEFURIResultParser.cs" />
     <Compile Include="client\result\ParsedResult.cs" />
     <Compile Include="client\result\ParsedResultType.cs" />
     <Compile Include="client\result\ProductParsedResult.cs" />
@@ -231,17 +220,11 @@
     <Compile Include="Dimension.cs" />
     <Compile Include="EncodeHintType.cs" />
     <Compile Include="FormatException.cs" />
-    <Compile Include="IBarcodeReader.cs" />
     <Compile Include="IBarcodeReader.WINMD.cs" />
-    <Compile Include="IBarcodeReaderGeneric.cs" />
-    <Compile Include="IBarcodeWriter.cs" />
     <Compile Include="IBarcodeWriter.WINMD.cs" />
-    <Compile Include="IBarcodeWriterGeneric.cs" />
     <Compile Include="IBarcodeWriterSvg.WINMD.cs" />
     <Compile Include="imb\IMBReader.cs" />
-    <Compile Include="IMultipleBarcodeReader.cs" />
     <Compile Include="IMultipleBarcodeReader.WINMD.cs" />
-    <Compile Include="IMultipleBarcodeReaderGeneric.cs" />
     <Compile Include="InvertedLuminanceSource.cs" />
     <Compile Include="LuminanceSource.cs" />
     <Compile Include="maxicode\decoder\BitMatrixParser.cs" />
